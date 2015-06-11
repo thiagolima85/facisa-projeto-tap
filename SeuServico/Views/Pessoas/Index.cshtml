@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SeuServico.Models.Pessoa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+    <div class="box">
+        <div class="col-lg-12">
+            <hr>
+            <h2 class="intro-text text-center">
+                Nossa
+                <strong>Equipe!</strong>
+            </h2>
+            <hr>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 text-center">
+                <img class="img-responsive" src="~/Content/img/user.png" alt="">
+                <h3>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                    <small> Consultor</small>
+                </h3>
+                <h5>@Html.DisplayFor(modelItem => item.Email)</h5>
+                <span>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </span>
+            </div>
+        }
+    </div>
+</div>
+<p style="text-align: center;">
+    @Html.ActionLink("Adicionar novo membro!", "Create", routeValues: null, htmlAttributes: new { @style = "color:#000" })
+</p>
